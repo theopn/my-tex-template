@@ -1,4 +1,4 @@
-# clean-la-hw-template
+# Clean Linear Algebra HW Template
 A simple and cLeAn hw template for linear algebra homework
 
 This homework template is inspired by 
