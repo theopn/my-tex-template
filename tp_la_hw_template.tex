@@ -1,0 +1,342 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Theo Park
+% Description: A simple and cLeAn hw template
+%              mainly for lin alg hw
+% Also this template is supposed to be portable
+% Inspired  by: https://github.com/jdavis/latex-homework-template,
+%               https://gist.github.com/marethyu/
+% Why?: Why not
+% Last Updated: 13 April 2022
+% Good luck w ur homework
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%% Type Homework Information in {}!! %%%%%%%%%%%
+\newcommand{\homework}{\textbf{Homework \#332}}
+\newcommand{\name}{Theo Park}
+\newcommand{\class}{MA687}
+\newcommand{\prof}{\textit{Prof. Carl Gauss}}
+\newcommand{\dueDate}{Due on: 32 April 1954}
+%%%%%%%%%% ----------------------------- %%%%%%%%%%%
+
+%% Basic set ups and pkg import %%
+\documentclass{article}
+
+\usepackage[left=2cm, right=2cm, top=3cm, bottom=3cm]{geometry}
+\usepackage[plain]{algorithm}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{extramarks}
+% My fav font %
+\usepackage{palatino}
+% Header settings %
+\usepackage{fancyhdr}
+\lhead{\name}
+\chead{\class : \homework}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\linespread{1.1}
+\pagestyle{fancy}
+%% --------------------------- %%
+
+%%%%%%%%%% Custom commands related to template itself %%%%%%%%%%
+
+%%%%%% This part is straight from jdavis template %%%%%
+%%%%%% (except deleting set counter and adding pagebreak), %%%%%
+%%%%%% and I am planning on changing it in the future %%%%%
+\newcommand{\enterProblemHeader}[1]{
+	\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\stepcounter{#1}
+	\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+\setcounter{secnumdepth}{0}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+\newenvironment{homeworkProblem}[1][-1]{
+	\ifnum#1>0
+	\setcounter{homeworkProblemCounter}{#1}
+	\fi
+	\section{Problem \arabic{homeworkProblemCounter}}
+	\enterProblemHeader{homeworkProblemCounter}
+}{
+	\exitProblemHeader{homeworkProblemCounter}
+  \pagebreak
+}
+
+% Question environment
+\newenvironment{question}{
+}
+
+% Solution commands; use NoNewLine for underfull hbox err %
+\newcommand{\solution}{\subsection{\large Solution}}
+\newcommand{\solutionNoNewLine}{\ \\ \textbf{\large Solution}}
+
+% Homework with points %
+\newcommand{\points}[1]{\vspace*{-10pt}\paragraph*{{(#1 Points)}}}
+%%%%%% ---------------------------------------------------------------- %%%%%
+
+%%%%%%%%%% ------------------------------------------ %%%%%%%%%%
+
+%%%%%%%%%% Custom commands related to math %%%%%%%%%%
+% Elementary row operation arrow
+% ex: \arrow3{R_1 - R_2}{}{}
+\newcount\arrowcount
+\newcommand\arrows[1]{
+        \global\arrowcount#1
+        \ifnum\arrowcount>0
+                \begin{matrix}
+                \expandafter\nextarrow
+        \fi
+}
+
+\newcommand\nextarrow[1]{
+        \global\advance\arrowcount-1
+        \ifx\relax#1\relax\else \xrightarrow{#1}\fi
+        \ifnum\arrowcount=0
+                \end{matrix}
+        \else
+                \\
+                \expandafter\nextarrow
+        \fi
+}
+
+% Augmented matrix command
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Augmented matrix when you find an inverse
+% e.g \begin{invAmatrix}{2} creates side by side 2 X 2 matrix
+\newenvironment{invAmatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|*{#1}{c}@{}}
+}{%
+  \end{array}\right]
+}
+%%%%%%%%%% ------------------------------- %%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+    %%%%% Title page %%%%%
+    \thispagestyle{plain}
+    \begin{center}
+        \vspace*{150pt}
+        \LARGE{\homework}\\
+        \Large{\name}\\
+        \vspace*{150pt}
+        \Large{\class - \prof}\\
+        \vspace{10pt}
+        \large{\dueDate}
+    \end{center}
+    \pagebreak
+    %%%%% ---------- %%%%%
+
+    % Homework 1 - My plan is to take homework # as an argument
+    \begin{homeworkProblem}
+        \begin{question}
+            Hi students my name is Carl and use Gaussian elemination to find solution for
+            \begin{align*}
+                \begin{amatrix}{3}
+                    1 & 1 & 1 & 3\\
+                    2 & 3 & 7 & 0\\
+                    1 & 3 & -2 & 17
+                \end{amatrix}
+            \end{align*}
+            I have no clue why they named it after me when I literally just copied and pasted from some random Asian math book
+        \end{question}
+        % I will fix points underfull issue
+        \points{23}
+
+        \solution
+        Hello so this is my solution\\
+        $\begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          2 & 3 & 7 & 0\\
+          1 & 3 & -2 & 17
+        \end{amatrix}
+        \arrows3{}{R_2 - 2R_1}{R_3 - R_1}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 2 & -3 & 14 
+        \end{amatrix}
+        \arrows3{}{}{R_3 - 2R_2}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & -13 & 26  
+        \end{amatrix}
+        \arrows3{}{}{\frac{R_3}{-13}}
+        \begin{bmatrix}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & 1 & -2 
+        \end{bmatrix}$\\
+        $\begin{cases}
+          x + y + z = 3\\
+          y + 5z = -6\\
+          z = -2
+        \end{cases} 
+        \therefore \begin{cases}
+          x = 1\\
+          y = 4\\
+          z = -2
+        \end{cases}$
+        Hello so this is my solution\\
+        $\begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          2 & 3 & 7 & 0\\
+          1 & 3 & -2 & 17
+        \end{amatrix}
+        \arrows3{}{R_2 - 2R_1}{R_3 - R_1}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 2 & -3 & 14 
+        \end{amatrix}
+        \arrows3{}{}{R_3 - 2R_2}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & -13 & 26  
+        \end{amatrix}
+        \arrows3{}{}{\frac{R_3}{-13}}
+        \begin{bmatrix}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & 1 & -2 
+        \end{bmatrix}$\\
+        $\begin{cases}
+          x + y + z = 3\\
+          y + 5z = -6\\
+          z = -2
+        \end{cases} 
+        \therefore \begin{cases}
+          x = 1\\
+          y = 4\\
+          z = -2
+        \end{cases}$
+        Hello so this is my solution\\
+        $\begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          2 & 3 & 7 & 0\\
+          1 & 3 & -2 & 17
+        \end{amatrix}
+        \arrows3{}{R_2 - 2R_1}{R_3 - R_1}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 2 & -3 & 14 
+        \end{amatrix}
+        \arrows3{}{}{R_3 - 2R_2}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & -13 & 26  
+        \end{amatrix}
+        \arrows3{}{}{\frac{R_3}{-13}}
+        \begin{bmatrix}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & 1 & -2 
+        \end{bmatrix}$\\
+        $\begin{cases}
+          x + y + z = 3\\
+          y + 5z = -6\\
+          z = -2
+        \end{cases} 
+        \therefore \begin{cases}
+          x = 1\\
+          y = 4\\
+          z = -2
+        \end{cases}$
+        Hello so this is my solution\\
+        $\begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          2 & 3 & 7 & 0\\
+          1 & 3 & -2 & 17
+        \end{amatrix}
+        \arrows3{}{R_2 - 2R_1}{R_3 - R_1}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 2 & -3 & 14 
+        \end{amatrix}
+        \arrows3{}{}{R_3 - 2R_2}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & -13 & 26  
+        \end{amatrix}
+        \arrows3{}{}{\frac{R_3}{-13}}
+        \begin{bmatrix}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & 1 & -2 
+        \end{bmatrix}$\\
+        $\begin{cases}
+          x + y + z = 3\\
+          y + 5z = -6\\
+          z = -2
+        \end{cases} 
+        \therefore \begin{cases}
+          x = 1\\
+          y = 4\\
+          z = -2
+        \end{cases}$
+                Hello so this is my solution\\
+        $\begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          2 & 3 & 7 & 0\\
+          1 & 3 & -2 & 17
+        \end{amatrix}
+        \arrows3{}{R_2 - 2R_1}{R_3 - R_1}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 2 & -3 & 14 
+        \end{amatrix}
+        \arrows3{}{}{R_3 - 2R_2}
+        \begin{amatrix}{3}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & -13 & 26  
+        \end{amatrix}
+        \arrows3{}{}{\frac{R_3}{-13}}
+        \begin{bmatrix}
+          1 & 1 & 1 & 3\\
+          0 & 1 & 5 & -7\\
+          0 & 0 & 1 & -2 
+        \end{bmatrix}$\\
+        $\begin{cases}
+          x + y + z = 3\\
+          y + 5z = -6\\
+          z = -2
+        \end{cases} 
+        \therefore \begin{cases}
+          x = 1\\
+          y = 4\\
+          z = -2
+        \end{cases}$
+    \end{homeworkProblem}
+
+    \begin{homeworkProblem}
+      \begin{question}
+        That was easy right? Because I am a good professor who assigns only 2 question per homework, here's the final questions.
+        \begin{itemize}
+          \item Find the inverse of 
+        \end{itemize}
+      \end{question}
+    \end{homeworkProblem}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
