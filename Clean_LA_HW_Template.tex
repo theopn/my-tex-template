@@ -5,7 +5,7 @@
 % Also this template is supposed to be portable
 % Inspired  by: https://github.com/jdavis/latex-homework-template
 % Why?: Why not
-% Last Updated: 13 April 2022
+% Last Updated: 15 April 2022
 % Good luck w ur homework
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -15,9 +15,9 @@
 \newcommand{\class}{MA687}
 \newcommand{\prof}{\textit{Prof. Carl Gauss}}
 \newcommand{\dueDate}{Due on: 32 April 1954}
-%%%%%%%%%% ----------------------------- %%%%%%%%%%%
+%%%%%%%%%% Type Homework Information in {}!! %%%%%%%%%%%
 
-%% Basic set ups and pkg import %%
+%%%%% /* Pkg Imports et Basic Setup */ %%%%%
 \documentclass{article}
 
 \usepackage[left=2cm, right=2cm, top=3cm, bottom=3cm]{geometry}
@@ -27,6 +27,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{extramarks}
+\usepackage{tikz}
 % My fav font %
 \usepackage{palatino}
 % Header settings %
@@ -39,11 +40,10 @@
 
 \linespread{1.1}
 \pagestyle{fancy}
-%% --------------------------- %%
+%%%%%% /* Pkg Imports et Basic Setup */ %%%%%%
 
-%%%%%%%%%% Custom commands related to template itself %%%%%%%%%%
-
-%%%%%% Inspired by jdavis template; automatic page break %%%%%
+%%%%%%%%%% /* Custom commands related to template itself */ %%%%%%%%%%
+%%%%%% /* Homework Env Commands */ %%%%%
 \newcommand{\enterProblemHeader}[1]{
 	\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
 	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
@@ -79,9 +79,8 @@
 
 % Homework with points %
 \newcommand{\points}[1]{\vspace*{-10pt}\paragraph*{{(#1 Points)}}\ \\}
-%%%%%% ---------------------------------------------------------------- %%%%%
-
-%%%%%%%%%% ------------------------------------------ %%%%%%%%%%
+%%%%%% /* Homework Env Commands */ %%%%%
+%%%%%%%%%% /* Custom commands related to template itself */ %%%%%%%%%%
 
 %%%%%%%%%% Custom commands related to math %%%%%%%%%%
 % Elementary row operation arrow
@@ -120,9 +119,9 @@
 }{%
   \end{array}\right]
 }
-%%%%%%%%%% ------------------------------- %%%%%%%%%%
+%%%%%%%%%% Custom commands related to math %%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% /* Document body! */ %%%%%%%
 \begin{document}
     %%%%% Title page %%%%%
     \thispagestyle{plain}
@@ -211,4 +210,4 @@
       \end{itemize}
     \end{homeworkProblem}
 \end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%% /* Document begins here! */ %%%%%%%
