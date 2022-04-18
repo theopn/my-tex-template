@@ -48,21 +48,19 @@
 	\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
 	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
 }
-
 \newcommand{\exitProblemHeader}[1]{
 	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
 	\stepcounter{#1}
 	\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
 }
+
 \setcounter{secnumdepth}{0}
 \newcounter{homeworkProblemCounter}
 \setcounter{homeworkProblemCounter}{1}
 \nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
-\newenvironment{homeworkProblem}[1][-1]{
-  \vspace*{-40pt}
-	\ifnum#1>0
-	\setcounter{homeworkProblemCounter}{#1}
-	\fi
+
+\newenvironment{homeworkProblem}{
+  \vspace*{-30pt}
 	\section{Problem \arabic{homeworkProblemCounter}}
 	\enterProblemHeader{homeworkProblemCounter}
 }{
@@ -119,73 +117,46 @@
 }{%
   \end{array}\right]
 }
-%%%%%%%%%% Custom commands related to math %%%%%%%%%%
+
+%%%%% Title page %%%%%
+\title {
+      \thispagestyle{plain}
+      \begin{center}
+          \vspace*{150pt}
+          \LARGE{\homework}\\
+          \Large{\name}\\
+          \vspace*{150pt}
+          \Large{\class - \prof}\\
+          \vspace{10pt}
+          \large{\dueDate}
+      \end{center}
+      \pagebreak
+}
+\date{}
+\author{}
+%%%%% ---------- %%%%%
 
 %%%%%%% /* Document body! */ %%%%%%%
 \begin{document}
-    %%%%% Title page %%%%%
-    \thispagestyle{plain}
-    \begin{center}
-        \vspace*{150pt}
-        \LARGE{\homework}\\
-        \Large{\name}\\
-        \vspace*{150pt}
-        \Large{\class - \prof}\\
-        \vspace{10pt}
-        \large{\dueDate}
-    \end{center}
-    \pagebreak
-    %%%%% ---------- %%%%%
+    \maketitle
+    \thispagestyle{fancy}
+    \vspace*{-40pt}
 
     % Homework 1 - My plan is to take homework # as an argument
     \begin{homeworkProblem}
       \points{2}
       \begin{question}
-          Hi students my name is Carl and use Gaussian elemination to find solution for
-          \begin{align*}
-              \begin{amatrix}{3}
-                  1 & 1 & 1 & 3\\
-                  2 & 3 & 7 & 0\\
-                  1 & 3 & -2 & 17
-              \end{amatrix}
-          \end{align*}
-          I have no clue why they named it after me when I literally just copied and pasted from some random Asian math book
+        Hi students my name is Carl and use Gaussian elemination to find solution for
+        \begin{align*}
+            \begin{amatrix}{3}
+                1 & 1 & 1 & 3\\
+                2 & 3 & 7 & 0\\
+                1 & 3 & -2 & 17
+            \end{amatrix}
+        \end{align*}
+        I have no clue why they named it after me when I literally just copied and pasted from some random Asian math book
       \end{question}
-      \solution
-      Hello so this is my solution\\
-      $\begin{amatrix}{3}
-        1 & 1 & 1 & 3\\
-        2 & 3 & 7 & 0\\
-        1 & 3 & -2 & 17
-      \end{amatrix}
-      \arrows3{}{R_2 - 2R_1}{R_3 - R_1}
-      \begin{amatrix}{3}
-        1 & 1 & 1 & 3\\
-        0 & 1 & 5 & -7\\
-        0 & 2 & -3 & 14 
-      \end{amatrix}
-      \arrows3{}{}{R_3 - 2R_2}
-      \begin{amatrix}{3}
-        1 & 1 & 1 & 3\\
-        0 & 1 & 5 & -7\\
-        0 & 0 & -13 & 26  
-      \end{amatrix}
-      \arrows3{}{}{\frac{R_3}{-13}}
-      \begin{bmatrix}
-        1 & 1 & 1 & 3\\
-        0 & 1 & 5 & -7\\
-        0 & 0 & 1 & -2 
-      \end{bmatrix}$\\
-      $\begin{cases}
-        x + y + z = 3\\
-        y + 5z = -6\\
-        z = -2
-      \end{cases} 
-      \therefore \begin{cases}
-        x = 1\\
-        y = 4\\
-        z = -2
-      \end{cases}$      
+      \solution   
     \end{homeworkProblem}
 
     \begin{homeworkProblem}
@@ -208,6 +179,7 @@
       \begin{itemize}
         \item 
       \end{itemize}
+      \solution   
     \end{homeworkProblem}
 \end{document}
 %%%%%%% /* Document begins here! */ %%%%%%%
