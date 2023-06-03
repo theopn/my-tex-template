@@ -1,10 +1,12 @@
 # My Tex Template
 
-This is the LaTeX homework template that I use for my schoolwork. My primary use for 
+This is the LaTeX homework template that I use for my schoolwork. My primary use for this template is:
 
-1. CS, algorithms
-2. Linear algebra, math
-3. Propositional Logic Proofs: As a CS and philosophy double major, I have taken and will take number of discrete math/logic classes.
+1. Analysis of algorithms and other cs related works
+2. Linear algebra and other mathematical proofs
+3. Logic, discrete math, and other philosophical works
+
+## How to Use the Template
 
 # Clean Linear Algebra HW Template
 A simple and cLeAn hw template for linear algebra homework
