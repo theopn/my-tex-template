@@ -1,21 +1,9 @@
-# My Tex Template
+# My LaTeX Template
 
-This is the LaTeX homework template that I use for my schoolwork. My primary use for this template is:
+Some of the LaTeX templates I use.
 
-1. Analysis of algorithms and other cs related works
-2. Linear algebra and other mathematical proofs
-3. Logic, discrete math, and other philosophical works
+## Homework template
 
-## How to Use the Template
+Homework template I use for algorithms, linear algebra, and other CS/math classes that requires LaTeX.
+Inspired by [jdavis's template](https://github.com/jdavis/latex-homework-template), but kept relatively simple (e.g., no complex counters), as well as lots of comments for what each packages and commands do to help my dumb self after each summer breaks.
 
-# Clean Linear Algebra HW Template
-A simple and cLeAn hw template for linear algebra homework
-
-This homework template is inspired by 
-https://github.com/jdavis/latex-homework-template
-but I am planning on making more changes and add features to diffrentiate it from it.
-The template is also supposed to be portable (work on with minimum package requirement) and more linear algebra focused.
-
-Feel free to take a look at the .pdf file, and clone the repository to use it or make changes.
-
-Good luck with your homework!
