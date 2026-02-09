@@ -1,0 +1,199 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Theo Park
+% Description: personal homework template
+% Loosely based on:https://github.com/jdavis/latex-homework-template
+% Why?: Why not
+% Last Updated: 9 Feb 2026
+% Good luck w ur homework
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%% VARIABLES %%%%%%%%%%
+\newcommand{\class}{CS690}
+\newcommand{\assignment}{Homework \#87}
+\newcommand{\prof}{Prof. Carl Gauss}
+\newcommand{\due}{31 Feb 1984}
+\newcommand{\me}{Theo Park}
+%%%%%%%%%%% VARIABLES %%%%%%%%%%
+
+\documentclass[notitlepage]{article}
+\topmargin=-0.45in
+\evensidemargin=-0.1in
+\oddsidemargin=-0.1in
+\textwidth=6.5in
+\textheight=9.0in
+
+\setlength{\parskip}{5pt} % Spacing between paragraphs
+\setlength\parindent{0pt} % automatic \noindent
+
+\setcounter{secnumdepth}{0}   % remove numbering in \section without *
+\setcounter{tocdepth}{2}      % toc displays up-to subsection
+
+% Title page
+\title{
+  \vspace{2in}
+  \begin{center}
+    \textbf{\assignment}\\
+    \vspace{0.1in}
+    \large{\textit{For \class, \prof}}\\
+    \vspace{0.1in}
+    \large{\textbf{by \me}}\\
+    \vspace{0.1in}
+    \small{Due: \due}
+  \end{center}
+  \vspace{1in}
+}
+\author{}
+\date{}
+
+% If you want simple, in-page title, uncomment this
+%\author{\myName}
+%\date{Due: \dueDate}
+%\title{\textbf{\class: \assignment}}
+
+% Package imports
+%\usepackage{gruvbox-colorscheme}    % color scheme
+\usepackage[style=latte,pagecolor=true,textcolor=true]{catppuccinpalette}
+\usepackage[default]{sourcesanspro} % font
+% Usage: \begin{algorithm}[H] (H for "HERE" to respect the order)
+\usepackage{algorithm}
+% Usage: \begin{algorithmic}[1] (1 for line number; see also: \textsc)
+\usepackage[beginLComment=/*~,
+            endLComment=~*/,
+            beginComment=//~]
+            {algpseudocodex}
+% Usage: \begin{align}
+\usepackage{amsmath}
+% Usage: \mathbb (blackboard bold), \mathcal (calligraphic)
+\usepackage{amssymb}
+% Usage: \newtheorem*{myTheo}{Theo's Theorem}, \begin{myTheo}
+\usepackage{amsthm}
+% Usage: \begin{itemize}[]
+% usage \begin{enumerate}[label={(\alph*)}] (or \arabic, \roman, \Roman, etc.)
+\usepackage{enumitem}
+% Usage: \begin{minted}{python}
+\usepackage{minted}
+% Usage: \st{strikethrough-ed text}
+\usepackage{soul}
+% Usage: \href{https://theopark.me}{Theo's Website}, hyperlink for \tableofcontents -- if you are using symbols in your section/chapter name, use \texorpdfstring{$something$}{alternative} in case it cannot render it in TOC
+\usepackage{hyperref}
+% Usage: \begin{framed}
+\usepackage{framed}
+
+\usepackage{extramarks}
+
+% Header
+\usepackage{fancyhdr}
+\setlength{\headheight}{14pt} % Margin between the header and the top of the page
+\headsep=0.15in % Margin between the header and the body text
+\lhead{\class: \assignment}
+\chead{\textbf{\leftmark}}
+\rhead{\textit{\me}}
+% Footer
+\renewcommand{\footrulewidth}{0.5pt} % Footer line thickness
+
+
+\begin{document}
+
+\maketitle
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\pagestyle{fancy}
+
+%%%%%%%%%%% BODY BEGINS %%%%%%%%%%
+
+\section{Problem 1: Algorithms}
+
+\subsection{Pseudocode}
+
+\begin{framed}
+  \textbf{Problem:}\\
+  (10 points) Design pseudocode for graph traversal algorithms.
+\end{framed}
+
+\subsubsection{Solution}
+
+\begin{algorithm}[H]
+  \begin{algorithmic}[1]
+    \Function{bfs}{$G = (V, E), s \in V$} \Comment{$s$ is the starting vertex}
+      \LComment{Queue-based implementation}
+      \State $Q \gets$ empty queue
+      \State $d \gets$ array initialized to nil
+      \Statex
+      \LComment{Visit the starting vertex}
+      \State $d[s] \gets 0$
+      \State Enqueue $s$ to $Q$
+      \Statex
+      \While{$Q$ is not empty}
+        \State $u \gets$ vertex dequeued from $Q$
+        \For{each edge $v$ adjacent to $u$ for which $d[v]$ is nil}
+          \State $d[v] \gets d[u] + 1$
+          \State Enqueue $v$ to $Q$
+        \EndFor
+      \EndWhile
+      \State \Return $d$
+    \EndFunction
+    \end{algorithmic}
+  \end{algorithm}
+
+Or list style
+
+\begin{framed}
+  \underline{\texttt{dfs}$(G)$}
+  \begin{enumerate}
+    \item[] \textit{// Depth first search}
+    \item If $v$ is unmarked
+      \begin{enumerate}[label=\Alph*.]
+        \item mark $v$
+        \item For each edge $(v, w)$ from $v$
+          \begin{enumerate}[label=(\roman*)]
+            \item \textsc{DFS}$(w)$
+          \end{enumerate}
+      \end{enumerate}
+  \end{enumerate}
+\end{framed}
+
+\subsection{Code Implementation}
+
+\begin{framed}
+  \textbf{Problem:}\\
+  (10 points) Implement the pseudocode in Python.
+\end{framed}
+
+\subsubsection{Solution}
+
+\begin{minted}{python}
+  def bfs(self, s: int):  # s is the starting node
+      q = deque()
+      dist = [-1] * self.n
+      path = [[] for _ in range(self.n)]
+      visited = [False] * self.n
+
+      q.append(s)
+      dist[s] = 0
+      path[s] = [0]
+      visited[s] = True
+
+      while q:
+          u = q.pop()
+
+          for v in self.adjList[u]:
+              if not visited[v]:
+                  q.append(v)
+                  dist[v] = dist[u] + 1
+                  path[v] = path[u] + [v]
+                  visited[v] = True
+
+      return dist, path, visited
+\end{minted}
+
+\pagebreak
+
+
+%%%%%%%%%%% BODY ENDS %%%%%%%%%%
+
+\end{document}
+
